@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Hamster</string>
+    <string name="greetings">Hello! I\'ll choose something interesting for you :) Let\'s go?</string>
+    <string name="go" translatable="false">GO!</string>
+    <string name="choice">Would you like to take a test?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="mood">Now you should choose buttons that describe your present state!
+        Choose wisely :)</string>
+    <string name="test">
+        Choose the one you like most!</string>
+    <string name="help">Help</string>
+    <string name="open_weather_maps_app_id">11111</string>
+    <string name="broken">Have broken heart</string>
+    <string name="feeling_happyness">Romantic mood</string>
+    <string name="pay_by_chash">Meditation</string>
+    <string name="having_a_depression">Relax :)</string>
+    <string name="you_are_a_student">You are a student</string>
+    <string name="you_are_sad_and_want_to_cry">Feeling sad</string>
+    <string name="you_are_cheered">You are cheered</string>
+    <string name="single">Single</string>
+    <string name="being_sad">Being sad</string>
+    <string name="night_activities">Night activities</string>
+    <string name="with_a_kid">With a kid</string>
+    <string name="family_rest">Family rest</string>
+    <string name="_24_hours_working">24 hours working</string>
+    <string name="christmas_mood">Christmas mood</string>
+    <string name="out_of_bounds">Out of bounds</string>
+    <string name="want_to_eat">Want to eat</string>
+    <string name="watch_a_movie">Watch a movie</string>
+    <string name="music_is_all_around_us">Music is all around us</string>
+    <string name="stay_at_home">Stay at home</string>
+    <string name="be_in_the_elements">Be in the elements</string>
+    <string name="feeling_exhausted">Feeling exhausted</string>
+    <string name="rob_a_jewelery_store">Rob a jewelery store</string>
+    <string name="pay_by_credit_card">Pay by credit card</string>
+    <string name="drink_a_cup_of_coffee">Drink a cup of coffee</string>
+    <string name="it_is_raining">It is raining</string>
+    <string name="after_work">After work</string>
+    <string name="walking_in_a_desert">Heat</string>
+    <string name="api_key">57ff733197572be3a9003798812d4cc0</string>
+    <string name="web_service_url">http://api.openweathermap.org/data/2.5/weather?q=</string>
+    <string name="season_entertainment">Season entertainment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_map">Map</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyCyLCjLyi_gVG_t82HuDczZgtLZYwUtI_E
+    </string>
+</resources>

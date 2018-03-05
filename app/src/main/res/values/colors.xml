@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#f9f3f5</color>
+    <color name="hamster">#3bb0d8</color>
+    <color name="tabs">#4aabcc</color>
+    <color name="background">#FCE8FF</color>
+    <color name="white">#fffff0</color>
+</resources>
