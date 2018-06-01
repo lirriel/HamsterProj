@@ -1,4 +1,4 @@
-package app.hse.myapplication;
+package app.hse.myapplication.UI;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
@@ -19,6 +19,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
+import app.hse.myapplication.R;
+import app.hse.myapplication.api.Weather;
 
 public class Main5Activity extends AppCompatActivity {
     String[] emotionalBackground = {"Happiness","Placidy",

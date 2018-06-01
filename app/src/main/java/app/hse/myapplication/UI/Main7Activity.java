@@ -1,17 +1,11 @@
-package app.hse.myapplication;
+package app.hse.myapplication.UI;
 
 import android.content.Intent;
-import android.content.Loader;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,19 +13,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
+import app.hse.myapplication.DownloadImageTask;
+import app.hse.myapplication.ItemObject;
+import app.hse.myapplication.MyAdapter;
+import app.hse.myapplication.R;
 import packs.ClassLib.Event;
 import packs.ClassLib.Place;
 import packs.Logic.BasicRequest;
@@ -165,7 +155,7 @@ public class Main7Activity extends AppCompatActivity {
             }
         }
 
-        this.startActivity(new Intent(Main7Activity.this, app.hse.myapplication.Main8Activity.class));
+        this.startActivity(new Intent(Main7Activity.this, Main8Activity.class));
 
         onPause();
     }
@@ -178,7 +168,7 @@ public class Main7Activity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        this.startActivity(new Intent(Main7Activity.this, app.hse.myapplication.MapActivity.class));
+        this.startActivity(new Intent(Main7Activity.this, MapActivity.class));
         onPause();
         return super.onOptionsItemSelected(item);
     }

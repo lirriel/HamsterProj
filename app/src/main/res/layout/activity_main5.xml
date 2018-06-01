@@ -9,7 +9,7 @@
     android:background="#ffffff"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="app.hse.myapplication.Main5Activity">
+    tools:context="app.hse.myapplication.UI.Main5Activity">
 
     <TextView
         android:background="@drawable/text_view"

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Hamster</string>
-    <string name="greetings">Hello! I\'ll choose something interesting for you :) Let\'s go?</string>
+    <string name="greetings">PUSH ME</string>
     <string name="go" translatable="false">GO!</string>
     <string name="choice">Would you like to take a test?</string>
     <string name="yes">YES</string>

@@ -1,4 +1,4 @@
-package app.hse.myapplication;
+package app.hse.myapplication.UI;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
+
+import app.hse.myapplication.R;
 
 public class Main3Activity extends AppCompatActivity {
     public static boolean[] f = new boolean[32];
@@ -88,14 +90,14 @@ public class Main3Activity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        this.startActivity(new Intent(Main3Activity.this, app.hse.myapplication.Main6Activity.class));
+        this.startActivity(new Intent(Main3Activity.this, Main6Activity.class));
         onPause();
         return super.onOptionsItemSelected(item);
     }
 
     public void OnClick5(View view){
         MainActivity.from = 1;
-        this.startActivity(new Intent(Main3Activity.this, app.hse.myapplication.Main7Activity.class));
+        this.startActivity(new Intent(Main3Activity.this, Main7Activity.class));
         onPause();
     }
 

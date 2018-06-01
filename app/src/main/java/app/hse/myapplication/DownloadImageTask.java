@@ -7,17 +7,15 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import app.hse.myapplication.Main7Activity;
 import packs.ClassLib.Event;
 import packs.ClassLib.Place;
 
-import static app.hse.myapplication.Main7Activity.l1;
-import static app.hse.myapplication.Main7Activity.l2;
+import static app.hse.myapplication.UI.Main7Activity.l1;
+import static app.hse.myapplication.UI.Main7Activity.l2;
 
 /**
  * Created by MiBook on 22.01.2017.
