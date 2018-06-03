@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="app.hse.myapplication.Main3Activity"
+    tools:context="app.hse.myapplication.UI.Main3Activity"
     android:orientation="vertical"
     android:rowCount="6"
     android:columnCount="6"

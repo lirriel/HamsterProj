@@ -1,4 +1,4 @@
-package app.hse.myapplication;
+package app.hse.myapplication.UI;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,7 +24,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import static app.hse.myapplication.Main3Activity.tags;
+import app.hse.myapplication.R;
+import app.hse.myapplication.api.Weather;
+
+import static app.hse.myapplication.UI.Main3Activity.tags;
 
 public class Main4Activity extends AppCompatActivity {
     public String[] emotionalBackground = {"Happiness","Placidy",
@@ -132,7 +135,7 @@ public class Main4Activity extends AppCompatActivity {
                 Main3Activity.f[20] = true;
             }
             MainActivity.from = 2;
-            this.startActivity(new Intent(Main4Activity.this, app.hse.myapplication.Main7Activity.class));
+            this.startActivity(new Intent(Main4Activity.this, Main7Activity.class));
             onPause();
         }
     }

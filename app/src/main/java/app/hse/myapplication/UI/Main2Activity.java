@@ -1,9 +1,11 @@
-package app.hse.myapplication;
+package app.hse.myapplication.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import app.hse.myapplication.R;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -14,12 +16,12 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void OnClick(View view){
-        this.startActivity(new Intent(Main2Activity.this, app.hse.myapplication.Main3Activity.class));
+        this.startActivity(new Intent(Main2Activity.this, Main3Activity.class));
         onPause();
     }
 
     public void OnClick1(View view){
-        this.startActivity(new Intent(Main2Activity.this, app.hse.myapplication.Main4Activity.class));
+        this.startActivity(new Intent(Main2Activity.this, Main4Activity.class));
         onPause();
     }
 }

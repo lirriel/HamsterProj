@@ -1,9 +1,12 @@
-package app.hse.myapplication;
+package app.hse.myapplication.UI;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import app.hse.myapplication.R;
+import app.hse.myapplication.UI.Main7Activity;
 
 public class Main8Activity extends AppCompatActivity {
 

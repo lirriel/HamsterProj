@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Hamster</string>
-    <string name="greetings">Hello! I\'ll choose something interesting for you :) Let\'s go?</string>
+    <string name="greetings">PUSH ME</string>
     <string name="go" translatable="false">GO!</string>
     <string name="choice">Would you like to take a test?</string>
     <string name="yes">YES</string>
@@ -46,4 +46,5 @@
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         AIzaSyCyLCjLyi_gVG_t82HuDczZgtLZYwUtI_E
     </string>
+    <string name="how">Как подберем досуг?</string>
 </resources>
