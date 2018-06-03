@@ -1,11 +1,13 @@
 package com.example.hamsterserveraccesslibrary;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import sun.rmi.runtime.Log;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.net.URL;
 
 public class HamsterServerAccess {
     private static Logger logger = LogManager.getLogger("hsa-logger");
@@ -14,26 +16,28 @@ public class HamsterServerAccess {
 
     private URL url;
     private boolean isConnected;
-    private HttpURLConnection connection;
+    private Socket socket;
 
     public void connect() throws Exception {
+        socket = new Socket(serverIP, port);
         try {
-            url = new URL(serverIP);
-            connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            isConnected = true;
-        } catch(Exception ex){
-            isConnected = false;
+            OutputStream outputStream = socket.getOutputStream();
+            OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+            writer.write("ХУЙ");
+            writer.close();
+        } catch (Exception ex) {
             throw new Exception(String.format("Connection failed. Error occurred: %s"));
         }
     }
 
     public boolean isConnected() {
-        return isConnected;
+        return socket.isConnected();
     }
 
-    public void disconnect() {
-        connection.disconnect();
+    public void disconnect() throws IOException {
+        socket.close();
         isConnected = false;
     }
+
+
 }
