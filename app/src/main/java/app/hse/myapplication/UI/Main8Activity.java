@@ -14,11 +14,11 @@ public class Main8Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main8);
-        TextView textView = (TextView)findViewById(R.id.title);
+        TextView textView = findViewById(R.id.title);
         textView.setText(Main7Activity.itemObject.getName());
-        ImageView imageView = (ImageView)findViewById(R.id.imageView2);
-        imageView.setImageDrawable(Main7Activity.itemObject.getPhoto().getDrawable());
-        TextView textView1 = (TextView)findViewById(R.id.desr);
+        ImageView imageView = findViewById(R.id.imageView2);
+        imageView.setImageDrawable(Main7Activity.itemObject.getPhoto());
+        TextView textView1 = findViewById(R.id.desr);
         textView1.setText(Main7Activity.description);
     }
 }

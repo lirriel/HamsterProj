@@ -353,6 +353,7 @@ public class GetWebRequest {
         @Override
         protected void onPostExecute(ArrayList<Place> result) {
             Main7Activity.setPlaces(result);
+            Main7Activity.updatePlaces(result);
             super.onPostExecute(result);
         }
     }
@@ -471,6 +472,7 @@ public class GetWebRequest {
         @Override
         protected void onPostExecute(ArrayList<Event> result) {
             Main7Activity.setEvents(result);
+            Main7Activity.updateEvents(result);
             super.onPostExecute(result);
         }
     }

@@ -1,15 +1,16 @@
 package app.hse.myapplication;
 
-import android.widget.ImageView;
+import android.graphics.drawable.Drawable;
 
 public class ItemObject {
 
     private String name;
-    private ImageView photo;
+    private Drawable photo;
+    private String imageUrl;
 
-    public ItemObject(String name, ImageView imageView) {
+    public ItemObject(String name, String imageUrl) {
         this.name = name;
-        this.photo = imageView;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -20,11 +21,19 @@ public class ItemObject {
         this.name = name;
     }
 
-    public ImageView getPhoto() {
+    public Drawable getPhoto() {
         return photo;
     }
 
-    public void setPhoto(ImageView photo) {
+    public void setPhoto(Drawable photo) {
         this.photo = photo;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

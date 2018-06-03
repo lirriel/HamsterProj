@@ -213,6 +213,8 @@ public class TagMap {
         for(int i = 0; i < moods.size(); i++){
             String mood = moods.get(i);
             Tag tagForMood = findTag(mood);
+            if (tagForMood == null)
+                continue;
             String[] places = tagForMood.getPlaces();
             for(int j = 0; j < places.length; j++)
                 if(!tags.contains(places[j]))
@@ -226,6 +228,8 @@ public class TagMap {
         for(int i = 0; i < moods.size(); i++){
             String mood = moods.get(i);
             Tag tagForMood = findTag(mood);
+            if (tagForMood == null)
+                continue;
             String[] places = tagForMood.getEvents();
             for(int j = 0; j < places.length; j++)
                 if(!tags.contains(places[j]))

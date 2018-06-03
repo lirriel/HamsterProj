@@ -13,12 +13,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
+import java.util.List;
 
-import app.hse.myapplication.DownloadImageTask;
 import app.hse.myapplication.ItemObject;
 import app.hse.myapplication.MyAdapter;
 import app.hse.myapplication.R;
@@ -27,30 +24,32 @@ import packs.ClassLib.Place;
 import packs.Logic.BasicRequest;
 
 public class Main7Activity extends AppCompatActivity {
-    private RecyclerView.LayoutManager mLayoutManager;
-    MyAdapter mAdapter;
-    ArrayList<ArrayList<ItemObject>> list = new ArrayList<>();
+    private static MyAdapter eventsAdapter;
+    private static MyAdapter placesAdapter;
+    private RecyclerView mRecyclerView;
+    private ArrayList<ArrayList<ItemObject>> list = new ArrayList<>();
 
-    static ArrayList<Place> list2;
-    static ArrayList<Event> list1;
+    static ArrayList<Place> listPlaces;
+    static ArrayList<Event> listEvents;
 
-    ProgressBar simpleProgressBar;
+    private ProgressBar simpleProgressBar;
 
     static boolean f1 = false, f2 = false;
 
-    ImageView imageView;
+    private ImageView imageView;
 
-    ArrayList<ItemObject> listAll = new ArrayList<>();
+    private ArrayList<ItemObject> listAll = new ArrayList<>();
 
-    public static ArrayList<ItemObject> l1 = new ArrayList<>(), l2 = new ArrayList<>();
+    public static ArrayList<ItemObject> placesItems = new ArrayList<>();
+    public static ArrayList<ItemObject> eventsItems = new ArrayList<>();
 
     public static void setPlaces(ArrayList<Place> list) {
-        list2 = list;
+        listPlaces = list;
         f2 = true;
     }
 
     public static void setEvents(ArrayList<Event> list) {
-        list1 = list;
+        listEvents = list;
         f1 = true;
     }
 
@@ -58,13 +57,13 @@ public class Main7Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Places"));
         tabLayout.addTab(tabLayout.newTab().setText("Events"));
         tabLayout.addOnTabSelectedListener(new Tabs());
 
-        l1 = new ArrayList<>();
-        l2 = new ArrayList<>();
+        placesItems = new ArrayList<>();
+        eventsItems = new ArrayList<>();
 
         ArrayList<String> moods = new ArrayList<>();
 
@@ -73,51 +72,56 @@ public class Main7Activity extends AppCompatActivity {
         else if (MainActivity.from == 2)
             moods = Main4Activity.getTags();
 
-        simpleProgressBar = (ProgressBar) findViewById(R.id.progressBar_cyclic);
+        simpleProgressBar = findViewById(R.id.progressBar_cyclic);
 
-//        list2 = BasicRequest.getPlacesToGUI(moods);
-//        list1 = BasicRequest.getEventsToGUI(moods);
         BasicRequest.getPlacesToGUI(moods);
         BasicRequest.getEventsToGUI(moods);
 
         imageView = new ImageView(this);
 
-        /*for (int i = 0; i < list2.size(); i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(R.drawable.load);
-            new DownloadImageTask(imageView, list2, i).execute(list2.get(i).imageURL);
-        }
+        list.add(placesItems);
+        list.add(eventsItems);
 
-        for (int i = 0; i < list1.size(); i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(R.drawable.load);
-            new DownloadImageTask(imageView, i, list1).execute(list1.get(i).imageURL);
-        }
-*/
-        list.add(l1);
-        list.add(l2);
+        listAll.addAll(placesItems);
+        listAll.addAll(eventsItems);
 
-        listAll.addAll(l1);
-        listAll.addAll(l2);
-
-        RecycleViewPut(l1);
+        initRecycleView();
         MainActivity.from = 0;
     }
 
-    void addFlags(double lat, double lon, String name) {
-        LatLng sydney = new LatLng(lat, lon);
-        MapActivity.mMap.addMarker(new MarkerOptions().position(sydney).title(name));
+    private static void placeToItem(ArrayList<Place> res) {
+        for (Place place : res) {
+            placesItems.add(new ItemObject(place.description, place.imageURL));
+        }
     }
 
-    private void RecycleViewPut(ArrayList<ItemObject> list){
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+    private static void eventToItem(ArrayList<Event> res) {
+        for (Event event: res) {
+            eventsItems.add(new ItemObject(event.description, event.imageURL));
+        }
+    }
+
+    public static void updatePlaces(ArrayList<Place> result) {
+        placeToItem(result);
+        placesAdapter.setData(placesItems);
+    }
+
+    public static void updateEvents(ArrayList<Event> result) {
+        eventToItem(result);
+        eventsAdapter.setData(eventsItems);
+    }
+
+    private void initRecycleView(){
+        mRecyclerView =  findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
         /*initialised Adapter Class and set Adapter on ListView */
-        mAdapter = new MyAdapter(list, R.layout.cards, this);
-        mRecyclerView.setAdapter(mAdapter);
+        placesAdapter = new MyAdapter(null, R.layout.cards, this);
+        eventsAdapter = new MyAdapter(null, R.layout.cards, this);
+
+        mRecyclerView.setAdapter(placesAdapter);
     }
 
     public static String description = "";
@@ -125,16 +129,15 @@ public class Main7Activity extends AppCompatActivity {
 
     public void OnClick8(View view){
         itemObject = null;
-        TextView textView = (TextView) view.findViewById(R.id.country_name);
+        TextView textView = view.findViewById(R.id.country_name);
         String s = textView.getText().toString();
 
-
-        for (int i = 0; i < list1.size(); i++) {
-            if (list1.get(i).title.equals(s)){
-                description = list1.get(i).description;
-                for (int j = 0; j < l2.size(); j++) {
-                    if (l2.get(i).getName().equals(s)){
-                        itemObject = l2.get(i);
+        for (int i = 0; i < listEvents.size(); i++) {
+            if (listEvents.get(i).title.equals(s)){
+                description = listEvents.get(i).description;
+                for (int j = 0; j < eventsItems.size(); j++) {
+                    if (eventsItems.get(i).getName().equals(s)){
+                        itemObject = eventsItems.get(i);
                         break;
                     }
                 }
@@ -142,12 +145,12 @@ public class Main7Activity extends AppCompatActivity {
             }
         }
         if (itemObject == null)
-        for (int i = 0; i < list2.size(); i++) {
-            if (list2.get(i).title.equals(s)){
-                description = list2.get(i).description;
-                for (int j = 0; j < l1.size(); j++) {
-                    if (l1.get(i).getName().equals(s)){
-                        itemObject = l1.get(i);
+        for (int i = 0; i < listPlaces.size(); i++) {
+            if (listPlaces.get(i).title.equals(s)){
+                description = listPlaces.get(i).description;
+                for (int j = 0; j < placesItems.size(); j++) {
+                    if (placesItems.get(i).getName().equals(s)){
+                        itemObject = placesItems.get(i);
                         break;
                     }
                 }
@@ -173,23 +176,6 @@ public class Main7Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setPlaces() {
-        for (int i = 0; i < list2.size(); i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(R.drawable.load);
-            new DownloadImageTask(imageView, list2, i).execute(list2.get(i).imageURL);
-        }
-    }
-
-    private void setEvents() {
-        for (int i = 0; i < list1.size(); i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(R.drawable.load);
-            new DownloadImageTask(imageView, i, list1).execute(list1.get(i).imageURL);
-        }
-    }
-
-
     class Tabs implements TabLayout.OnTabSelectedListener{
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
@@ -197,22 +183,19 @@ public class Main7Activity extends AppCompatActivity {
             if (tab.getText().equals("Places")){
 
                 if (f2) {
-                   setPlaces();
                    f2 = false;
                    simpleProgressBar.setVisibility(View.INVISIBLE);
                 }
 
-                RecycleViewPut(list.get(0));
+                mRecyclerView.setAdapter(placesAdapter);
             }
             else {
 
                 if (f1) {
-                    setEvents();
                     f1 = false;
                     simpleProgressBar.setVisibility(View.INVISIBLE);
                 }
-
-                RecycleViewPut(list.get(1));
+                mRecyclerView.setAdapter(eventsAdapter);
             }
         }
 
