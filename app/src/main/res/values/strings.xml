@@ -46,4 +46,5 @@
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         AIzaSyCyLCjLyi_gVG_t82HuDczZgtLZYwUtI_E
     </string>
+    <string name="how">Как подберем досуг?</string>
 </resources>
