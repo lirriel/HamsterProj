@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button_go = findViewById(R.id.angry_btn);
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.shake);
         animation.reset();
         button_go.clearAnimation();
