@@ -23,11 +23,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<ItemObject> itemObjects;
     private int rowLayout;
     private Context mContext;
+    private ViewHolder.OnItemClickListener listener;
 
-    public MyAdapter(List<ItemObject> itemObjects, int rowLayout, Context context) {
+    public MyAdapter(List<ItemObject> itemObjects, int rowLayout, Context context, ViewHolder.OnItemClickListener listener) {
         this.itemObjects = itemObjects;
         this.rowLayout = rowLayout;
         this.mContext = context;
+        this.listener = listener;
     }
 
     public void setData(List<ItemObject> newItems) {
@@ -42,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v);
+        return new ViewHolder(v, listener);
     }
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
@@ -50,13 +52,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name;
-        public ImageView imageView;
+        private TextView name;
+        private OnItemClickListener listener;
+        private ImageView imageView;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.country_name);
             imageView = itemView.findViewById(R.id.country_photo);
+            this.listener = listener;
         }
 
         void bind(ItemObject itemObject) {
@@ -67,6 +71,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                     .placeholder(R.mipmap.ic_launcher)
                     .fallback(android.R.color.holo_orange_light)
                     .error(R.mipmap.ic_launcher);
+
+            if (listener != null)
+                itemView.setOnClickListener(view -> listener.onClick(itemObject));
 
             Glide.with(itemView)
                     .load(itemObject.getImageUrl())
@@ -84,6 +91,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                         }
                     })
                     .into(imageView);
+        }
+
+        public interface OnItemClickListener {
+            void onClick(ItemObject itemObject);
         }
     }
 }

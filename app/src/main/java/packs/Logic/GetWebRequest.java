@@ -248,35 +248,32 @@ public class GetWebRequest {
 
             final URL url = getURL(urlAddress);
 
-            Thread t = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        StringBuilder builder = null;
-                        connection = (HttpURLConnection) url.openConnection();
-                        int response = connection.getResponseCode();
+            Thread t = new Thread(() -> {
+                try {
+                    StringBuilder builder = null;
+                    connection = (HttpURLConnection) url.openConnection();
+                    int response = connection.getResponseCode();
 
-                        if (response == HttpURLConnection.HTTP_OK) {
-                            builder = new StringBuilder();
+                    if (response == HttpURLConnection.HTTP_OK) {
+                        builder = new StringBuilder();
 
-                            try (BufferedReader reader = new BufferedReader(
-                                    new InputStreamReader(connection.getInputStream()))) {
+                        try (BufferedReader reader = new BufferedReader(
+                                new InputStreamReader(connection.getInputStream()))) {
 
-                                String line;
+                            String line;
 
-                                while ((line = reader.readLine()) != null) {
-                                    builder.append(line);
-                                }
-
-                                JSONText = builder.toString();
-                            } catch (IOException e) {
+                            while ((line = reader.readLine()) != null) {
+                                builder.append(line);
                             }
+
+                            JSONText = builder.toString();
+                        } catch (IOException e) {
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        connection.disconnect();
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    connection.disconnect();
                 }
             });
             t.start();
@@ -369,35 +366,32 @@ public class GetWebRequest {
 
             final URL url = getURL(urlAddress);
 
-            Thread t = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        StringBuilder builder = null;
-                        connection = (HttpURLConnection) url.openConnection();
-                        int response = connection.getResponseCode();
+            Thread t = new Thread(() -> {
+                try {
+                    StringBuilder builder = null;
+                    connection = (HttpURLConnection) url.openConnection();
+                    int response = connection.getResponseCode();
 
-                        if (response == HttpURLConnection.HTTP_OK) {
-                            builder = new StringBuilder();
+                    if (response == HttpURLConnection.HTTP_OK) {
+                        builder = new StringBuilder();
 
-                            try (BufferedReader reader = new BufferedReader(
-                                    new InputStreamReader(connection.getInputStream()))) {
+                        try (BufferedReader reader = new BufferedReader(
+                                new InputStreamReader(connection.getInputStream()))) {
 
-                                String line;
+                            String line;
 
-                                while ((line = reader.readLine()) != null) {
-                                    builder.append(line);
-                                }
-
-                                JSONText = builder.toString();
-                            } catch (IOException e) {
+                            while ((line = reader.readLine()) != null) {
+                                builder.append(line);
                             }
+
+                            JSONText = builder.toString();
+                        } catch (IOException e) {
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        connection.disconnect();
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    connection.disconnect();
                 }
             });
             t.start();

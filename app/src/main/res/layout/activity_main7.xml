@@ -61,14 +61,5 @@
 
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.AppBarLayout>
-    <ProgressBar
-            android:id="@+id/progressBar_cyclic"
-            android:layout_width="match_parent"
-            android:layout_height="147dp"
-            android:minHeight="50dp"
-            android:minWidth="50dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" android:layout_marginTop="100dp" android:paddingTop="100dp"
-            android:visibility="visible" android:foreground="@drawable/action_bar_color"/>
 
 </android.support.design.widget.CoordinatorLayout>

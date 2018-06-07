@@ -29,13 +29,35 @@ public class Main3Activity extends AppCompatActivity {
         tags[0]="rain";
         tags[1]="snow";
         tags[1]="brokenHeart";
-        tags[3]="family";tags[17]="romantic";
-        tags[4]="kid";tags[6]="rest";tags[9]="drink";tags[18]="home";
-        tags[8]="creditCard";tags[9]="roundClock";tags[11]="heat";tags[12]="expensive";
-        tags[13]="tired";tags[14]="eat";tags[15]="bound";tags[16]="friends";tags[19]="night";
-        tags[20]="nature";tags[21]="movie";tags[22]="sad";tags[23]="meditation";
-        tags[24]="pi";tags[25]="music";tags[26]="balance";tags[27]="single";
-        tags[28]="cheer";tags[29]="student";tags[30]="work";tags[31]="season";
+        tags[3]="family";
+        tags[4]="kid";
+        tags[5] = "rest";
+        tags[6]="rest";
+        tags[7] = "rest";
+        tags[8]="creditCard";
+        tags[9]="drink";
+        tags[10]="roundClock";
+        tags[11]="heat";
+        tags[12]="expensive";
+        tags[13]="tired";
+        tags[14]="eat";
+        tags[15]="bound";
+        tags[16]="friends";
+        tags[17]="romantic";
+        tags[18]="home";
+        tags[19]="night";
+        tags[20]="nature";
+        tags[21]="movie";
+        tags[22]="sad";
+        tags[23]="meditation";
+        tags[24]="pi";
+        tags[25]="music";
+        tags[26]="balance";
+        tags[27]="single";
+        tags[28]="cheer";
+        tags[29]="student";
+        tags[30]="work";
+        tags[31]="season";
         int color = Color.parseColor("#ffffff");
         int[] arr = {R.id.imageButton,
                 R.id.imageButton2,
@@ -47,7 +69,8 @@ public class Main3Activity extends AppCompatActivity {
                 R.id.imageButton10,
                 R.id.imageButton11,
                 R.id.imageButton12,
-                R.id.imageButton13,R.id.imageButton14,
+                R.id.imageButton13,
+                R.id.imageButton14,
                 R.id.imageButton15,
                 R.id.imageButton16,
                 R.id.imageButton17,

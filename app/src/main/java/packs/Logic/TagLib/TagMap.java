@@ -144,8 +144,8 @@ public class TagMap {
 
         tagMap.add(new Tag(
                 "tired",
-                new String[]{""},
-                new String[]{""}
+                new String[]{"yoga","coffee"},
+                new String[]{"social-activity", "library"}
         ));
 
         tagMap.add(new Tag(
